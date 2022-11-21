@@ -85,6 +85,12 @@ function LinkedList() {
       return index;
     },
 
+    insertAt(value, index) {
+      let node = this.at(index - 1);
+      let newNode = NodeElement(value, node.nextNode);
+      node.nextNode = newNode;
+    },
+
     toString(node = head) {
       if (node.value === "end") {
         return null;
@@ -111,6 +117,7 @@ console.log(list.at(2));
 console.log(list.contains("honey"));
 console.log(list.find("honey"));
 list.pop();
+list.insertAt("sunny", 5);
 console.log(list.toString());
 console.log(list.size());
 console.log(list.head());
