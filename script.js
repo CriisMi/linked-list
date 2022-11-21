@@ -89,6 +89,13 @@ function LinkedList() {
       let node = this.at(index - 1);
       let newNode = NodeElement(value, node.nextNode);
       node.nextNode = newNode;
+      length++;
+    },
+
+    removeAt(index) {
+      let node = this.at(index - 1);
+      node.nextNode = node.nextNode.nextNode;
+      length--;
     },
 
     toString(node = head) {
@@ -107,18 +114,3 @@ function NodeElement(value = null, nextNode = null) {
     nextNode,
   };
 }
-
-let list = LinkedList();
-list.append("luna");
-list.prepend("bobi");
-list.prepend("honey");
-console.log(list.toString());
-console.log(list.at(2));
-console.log(list.contains("honey"));
-console.log(list.find("honey"));
-list.pop();
-list.insertAt("sunny", 5);
-console.log(list.toString());
-console.log(list.size());
-console.log(list.head());
-console.log(list.tail());
